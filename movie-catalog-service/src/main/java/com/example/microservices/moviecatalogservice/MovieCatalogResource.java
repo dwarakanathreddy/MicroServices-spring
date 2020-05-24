@@ -24,7 +24,7 @@ public class MovieCatalogResource {
     @RequestMapping("/{userid}")
     public List<MovieCatalog> userid(@PathVariable("userid") String userid){
     //    RestTemplate restTemplate = new RestTemplate();
-        Rating getMovieRating = restTemplate.getForObject("http://localhost:8082/ratings/titanic", Rating.class);
+        Rating getMovieRating = restTemplate.getForObject("http://rating-data-service/ratings/titanic", Rating.class);
         System.out.println(getMovieRating);
         return Collections.singletonList(
                 new MovieCatalog("titanic","this is movie about ship",5)
