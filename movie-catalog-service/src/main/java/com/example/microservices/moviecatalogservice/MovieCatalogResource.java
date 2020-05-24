@@ -1,6 +1,7 @@
 package com.example.microservices.moviecatalogservice;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,9 +18,12 @@ import java.util.List;
 public class MovieCatalogResource {
 
 
+    @Autowired
+    private RestTemplate restTemplate;
+
     @RequestMapping("/{userid}")
     public List<MovieCatalog> userid(@PathVariable("userid") String userid){
-        RestTemplate restTemplate = new RestTemplate();
+    //    RestTemplate restTemplate = new RestTemplate();
         Rating getMovieRating = restTemplate.getForObject("http://localhost:8082/ratings/titanic", Rating.class);
         System.out.println(getMovieRating);
         return Collections.singletonList(
