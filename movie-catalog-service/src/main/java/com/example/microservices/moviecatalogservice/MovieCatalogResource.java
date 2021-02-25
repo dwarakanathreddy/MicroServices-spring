@@ -32,8 +32,8 @@ public class MovieCatalogResource {
         //restTemplate.getForObject(, Rating.class);
         MovieSummary movieSummary = restTemplate.getForObject("https://api.themoviedb.org/3/movie/"+userid+"?api_key="+apiKey, MovieSummary.class);
 
-        Rating getMovieRating = restTemplate.getForObject("http://rating-data-service/ratings/titanic", Rating.class);
-        System.out.println(getMovieRating);
+//        Rating getMovieRating = restTemplate.getForObject("http://rating-data-service/ratings/titanic", Rating.class);
+//        System.out.println(getMovieRating);
         System.out.println(movieSummary.getOverview());
         return Collections.singletonList(
                 new MovieCatalog("titanic","this is movie about ship",5)
